@@ -1,9 +1,8 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -11,7 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+
+import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.FavFragment;
+import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.MovieFragment;
+import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.TvFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
@@ -24,15 +26,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener()
+//        {
+//            @Override
+//            public void onClick(View view)
+//            {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -41,6 +43,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        changePage(R.id.nav_movie);
+        navigationView.setCheckedItem(R.id.nav_movie);
     }
 
     @Override
@@ -74,10 +79,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings)
-        {
-            return true;
-        }
+//        if (id == R.id.action_settings)
+//        {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -89,33 +94,34 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera)
-        {
-            // Handle the camera action
-        }
-        else if (id == R.id.nav_gallery)
-        {
+        changePage(id);
 
-        }
-        else if (id == R.id.nav_slideshow)
-        {
+        return true;
+    }
 
-        }
-        else if (id == R.id.nav_manage)
-        {
+    private void changePage(int id)
+    {
+        Fragment fragment = null;
 
-        }
-        else if (id == R.id.nav_share)
+        if (id == R.id.nav_movie)
         {
-
+            fragment = new MovieFragment();
+            setTitle("Movie");
         }
-        else if (id == R.id.nav_send)
+        else if (id == R.id.nav_tv)
         {
-
+            fragment = new TvFragment();
+            setTitle("TV");
         }
+        else if (id == R.id.nav_fav)
+        {
+            fragment = new FavFragment();
+            setTitle("Favourite");
+        }
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitNow();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
     }
 }
