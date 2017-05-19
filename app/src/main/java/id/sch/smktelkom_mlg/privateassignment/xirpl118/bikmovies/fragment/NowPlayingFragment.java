@@ -19,7 +19,7 @@ import com.google.gson.Gson;
 import java.util.ArrayList;
 
 import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.R;
-import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.adapter.MovieAdapter;
+import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.adapter.NowPlayingAdapter;
 import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.model.Result;
 import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.model.ResultResponse;
 import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.service.GsonGetRequest;
@@ -28,12 +28,12 @@ import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.service.VolleyS
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MovieFragment extends Fragment implements MovieAdapter.IMovieAdapter
+public class NowPlayingFragment extends Fragment implements NowPlayingAdapter.INowPlayingAdapter
 {
-    ArrayList<Result> mList = new ArrayList<>();
-    MovieAdapter mIMovieAdapter;
+    ArrayList<Result> np_List = new ArrayList<>();
+    NowPlayingAdapter np_mAdapter;
 
-    public MovieFragment()
+    public NowPlayingFragment()
     {
         // Required empty public constructor
     }
@@ -43,7 +43,7 @@ public class MovieFragment extends Fragment implements MovieAdapter.IMovieAdapte
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie, container, false);
+        return inflater.inflate(R.layout.fragment_now_playing, container, false);
     }
 
     @Override
@@ -53,8 +53,8 @@ public class MovieFragment extends Fragment implements MovieAdapter.IMovieAdapte
 
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        mIMovieAdapter = new MovieAdapter(this.getActivity(), mList, this);
-        recyclerView.setAdapter(mIMovieAdapter);
+        np_mAdapter = new NowPlayingAdapter(this.getActivity(), np_List, this);
+        recyclerView.setAdapter(np_mAdapter);
     }
 
     @Override
@@ -74,8 +74,8 @@ public class MovieFragment extends Fragment implements MovieAdapter.IMovieAdapte
             public void onResponse(ResultResponse response)
             {
                 Log.d("FLOW", "onResponse: " + (new Gson().toJson(response)));
-                mList.addAll(response.results);
-                mIMovieAdapter.notifyDataSetChanged();
+                np_List.addAll(response.results);
+                np_mAdapter.notifyDataSetChanged();
 
             }
         }, new Response.ErrorListener()

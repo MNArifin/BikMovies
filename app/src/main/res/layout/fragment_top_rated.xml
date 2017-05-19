@@ -7,4 +7,4 @@
     android:layout_height="match_parent"
     android:clipToPadding="false"
     android:scrollbars="vertical"
-    tools:context="id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.MovieFragment"/>
+    tools:context="id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.TopRatedFragment"/>

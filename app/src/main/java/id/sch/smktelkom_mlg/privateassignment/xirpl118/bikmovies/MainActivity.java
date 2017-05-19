@@ -12,8 +12,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.FavFragment;
-import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.MovieFragment;
-import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.TvFragment;
+import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.NowPlayingFragment;
+import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment.TopRatedFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener
 {
@@ -105,13 +105,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.nav_movie)
         {
-            fragment = new MovieFragment();
-            setTitle("Movie");
+            fragment = new NowPlayingFragment();
+            setTitle("Now Playing");
         }
         else if (id == R.id.nav_tv)
         {
-            fragment = new TvFragment();
-            setTitle("TV");
+            fragment = new TopRatedFragment();
+            setTitle("Top Rated");
         }
         else if (id == R.id.nav_fav)
         {
