@@ -39,7 +39,6 @@ public class DetailActivity extends AppCompatActivity
         TextView tvLanguage = (TextView) findViewById(R.id.textViewOriginalLanguage);
 
         ImageView ivBackdrop = (ImageView) findViewById(R.id.imageViewBackdrop);
-        ImageView ivPoster = (ImageView) findViewById(R.id.imageViewPoster);
 
         setTitle(rTitle);
         tvOverview.setText(rOverview);
@@ -51,7 +50,6 @@ public class DetailActivity extends AppCompatActivity
 
 
         Glide.with(getApplication()).load("http://image.tmdb.org/t/p/w500" + rBackdrop).into(ivBackdrop);
-        Glide.with(getApplication()).load("http://image.tmdb.org/t/p/w500" + rPoster).into(ivPoster);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener()
