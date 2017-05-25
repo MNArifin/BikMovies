@@ -1,7 +1,6 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.adapter;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +26,11 @@ public class TopRatedAdapter extends RecyclerView.Adapter<TopRatedAdapter.ViewHo
     ITopRatedAdapter mITopRatedAdapter;
     Context context;
 
-    public TopRatedAdapter(Context context, ArrayList<Result> list, Fragment fragment)
+    public TopRatedAdapter(Context context, ArrayList<Result> list)
     {
         this.list = list;
         this.context = context;
-        mITopRatedAdapter = (ITopRatedAdapter) fragment;
+        mITopRatedAdapter = (TopRatedAdapter.ITopRatedAdapter) context;
     }
 
     @Override
@@ -65,7 +64,7 @@ public class TopRatedAdapter extends RecyclerView.Adapter<TopRatedAdapter.ViewHo
 
     public interface ITopRatedAdapter
     {
-        void showNowPlaying(String poster_path, String title, String overview, String vote_average, String release_date, String backdrop_path, String vote_count, String popularity, String original_language);
+        void showTopRated(String poster_path, String title, String overview, String vote_average, String release_date, String backdrop_path, String vote_count, String popularity, String original_language);
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder
@@ -90,7 +89,7 @@ public class TopRatedAdapter extends RecyclerView.Adapter<TopRatedAdapter.ViewHo
                 public void onClick(View v)
                 {
                     Result result = list.get(getAdapterPosition());
-                    mITopRatedAdapter.showNowPlaying(result.poster_path, result.title, result.overview, result.vote_average, result.release_date, result.backdrop_path, result.vote_count, result.popularity, result.original_language);
+                    mITopRatedAdapter.showTopRated(result.poster_path, result.title, result.overview, result.vote_average, result.release_date, result.backdrop_path, result.vote_count, result.popularity, result.original_language);
                 }
             });
         }

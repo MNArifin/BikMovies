@@ -1,7 +1,6 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -54,18 +53,22 @@ public class TopRatedFragment extends Fragment implements TopRatedAdapter.ITopRa
 
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        tr_mAdapter = new TopRatedAdapter(this.getActivity(), tr_List, this);
+        tr_mAdapter = new TopRatedAdapter(this.getActivity(), tr_List);
         recyclerView.setAdapter(tr_mAdapter);
+
+        downloadDataTopRated();
     }
 
+/*
     @Override
     public void onAttach(Context context)
     {
         super.onAttach(context);
-        downloadDataNowPlaying();
+        downloadDataTopRated();
     }
+*/
 
-    private void downloadDataNowPlaying()
+    private void downloadDataTopRated()
     {
         String url = "https://api.themoviedb.org/3/movie/top_rated?api_key=5ac213ef7204a3d0939b6c240e8540c3&language=en-US&page=1";
 
@@ -91,7 +94,7 @@ public class TopRatedFragment extends Fragment implements TopRatedAdapter.ITopRa
     }
 
     @Override
-    public void showNowPlaying(String poster_path, String title, String overview, String vote_average, String release_date, String backdrop_path, String vote_count, String popularity, String original_language)
+    public void showTopRated(String poster_path, String title, String overview, String vote_average, String release_date, String backdrop_path, String vote_count, String popularity, String original_language)
     {
 
     }

@@ -1,7 +1,6 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -53,16 +52,17 @@ public class NowPlayingFragment extends Fragment implements NowPlayingAdapter.IN
 
         RecyclerView recyclerView = (RecyclerView) getView().findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getActivity()));
-        np_mAdapter = new NowPlayingAdapter(this.getActivity(), np_List, this);
+        np_mAdapter = new NowPlayingAdapter(this.getActivity(), np_List);
         recyclerView.setAdapter(np_mAdapter);
+
+        downloadDataNowPlaying();
     }
 
-    @Override
-    public void onAttach(Context context)
+    /*public void onAttach(Context context)
     {
         super.onAttach(context);
         downloadDataNowPlaying();
-    }
+    }*/
 
     private void downloadDataNowPlaying()
     {

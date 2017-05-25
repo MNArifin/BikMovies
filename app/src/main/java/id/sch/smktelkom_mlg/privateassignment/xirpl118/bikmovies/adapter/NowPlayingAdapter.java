@@ -1,7 +1,6 @@
 package id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.adapter;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,11 +26,11 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.Vi
     INowPlayingAdapter mINowPlayingAdapter;
     Context context;
 
-    public NowPlayingAdapter(Context context, ArrayList<Result> list, Fragment fragment)
+    public NowPlayingAdapter(Context context, ArrayList<Result> list)
     {
         this.list = list;
         this.context = context;
-        mINowPlayingAdapter = (INowPlayingAdapter) fragment;
+        mINowPlayingAdapter = (NowPlayingAdapter.INowPlayingAdapter) context;
     }
 
     @Override
