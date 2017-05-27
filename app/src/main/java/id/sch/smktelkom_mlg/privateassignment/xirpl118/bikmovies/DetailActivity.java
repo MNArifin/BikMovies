@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import id.sch.smktelkom_mlg.privateassignment.xirpl118.bikmovies.model.Fav;
+import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 public class DetailActivity extends AppCompatActivity
 {
@@ -98,6 +99,10 @@ public class DetailActivity extends AppCompatActivity
         }.execute();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        new MaterialShowcaseView.Builder(this).setTarget(fab).setDismissText("OK").setContentText("You can add film to my favorite list by tap STAR button!").setDelay(200) // optional but starting animations immediately in onCreate can make them choppy
+                .singleUse("Yes") // provide a unique ID used to ensure it is only shown once
+                .show();
+
         fab.setOnClickListener(new View.OnClickListener()
         {
             @Override

@@ -54,14 +54,14 @@
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:textColor="@color/album_title"
-                    android:textSize="5dp"/>
+                    android:textSize="8dp"/>
 
                 <TextView
                     android:id="@+id/np_textViewOverview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/np_textViewTitle"
-                    android:maxLines="4"
+                    android:maxLines="3"
                     android:paddingBottom="7dp"
                     android:paddingLeft="@dimen/album_title_padding"
                     android:paddingRight="@dimen/album_title_padding"
