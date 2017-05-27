@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         else if (id == R.id.nav_fav)
         {
             fragment = new FavFragment();
-            setTitle("Favourite");
+            setTitle("My Favorite");
         }
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).commitNow();
